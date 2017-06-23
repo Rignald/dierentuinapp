@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Dierentuin app</title>
+    <link type="text/css" rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div id="container">
+    
+
+    <div id="continent-links">
+        <script id="template-continent-links" type="text/template">
+            <% _.each(links, function(link, index){ %>
+                <a href="#" data-continent=<%= link.get('name') %>><%= link.get('name') %></a>
+            <% }) %>
+            <a href="/">home</a>
+
+            <p id="continentDetail"></p>
+
+        </script>
+    </div>
+
+    <div id="continent-type">
+        <script id="template-continent-type" type="text/template">
+            <% _.each(types, function(type, index){ %>
+                <a href="#" data-type=<%= type.get('spieces') %>><%= type.get('spieces') %></a>
+            <% }) %>
+        </script>
+    </div>
+
+    <div id="continent-animal">
+        <script id="template-continent-animel" type="text/template">
+            <% _.each(animels, function(animal, index){ %>
+                <a href="#" data-type="<%= animal.get('type') %>" data-id="<%= animal.get('id') %>"><%= animal.get('name') %></a>
+            <% }) %>
+        </script>
+    </div>
+
+
+    <div id="continent-animels">
+        <span class="start-message">Kies een wereld-deel</span>
+
+        <script id="template-error" type="text/template">
+            <span class="error"><%= message %></span>
+        </script>
+
+        <script id="template-animal-typ" type="text/template">
+            <% _.each(matches, function(match, index){ %>
+                
+            <div class="animal" data-type=<%= match.get('type') %>>
+                <div class="type">
+                    <p><%= match.get('name') %></p>
+                     <a href="#" data-detail=<%= match.get('id') %>><%= match.get('id') %></a>
+                     <a href="#" data-detail=<%= match.get('id') %>><img src="../../../img/<%= match.get('image') %>.jpg" alt="afbeelding van een <%= match.get('name') %>" title="<%= match.get('name') %>"></a>
+                </div>
+           
+            </div>
+            <% }); %>
+        </script>
+    </div>
+
+ <div id="animal-detail">
+       
+    <script id="template-animal-detail" type="text/template">
+        
+            <ul>
+                <li><%= detail.get('name')%></li>
+                <li><%= detail.get('image')%></li>
+                <li><%= detail.get('description')%></li>
+                            
+                    <%= detail.get('latin_name') %>
+                    <%= detail.get('type') %>
+                    <%= detail.get('THIRD_LEVEL') %>
+            </ul>
+        
+    </script>
+     
+    </div>     
+</div>
+<script src="dist/bundle.js" type="text/javascript"></script>
+</body>
+</html>
